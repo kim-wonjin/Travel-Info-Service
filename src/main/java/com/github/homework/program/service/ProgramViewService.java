@@ -4,6 +4,8 @@ import com.github.homework.program.domain.Program;
 import com.github.homework.program.model.ProgramViewDetailDto;
 import com.github.homework.program.model.ProgramViewDto;
 import com.github.homework.program.repository.ProgramRepository;
+import com.github.homework.theme.domain.Theme;
+import com.github.homework.theme.service.ThemeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -26,7 +28,8 @@ public class ProgramViewService {
                program.getName(),
                program.getIntroduction(),
                program.getIntroductionDetail(),
-               program.getRegion()
+               program.getRegion(),
+               program.getTheme()
        ));
     }
     public Page<ProgramViewDto> pageBy(Pageable pageable) {
