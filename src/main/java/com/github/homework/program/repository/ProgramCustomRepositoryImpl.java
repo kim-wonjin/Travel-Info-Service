@@ -28,7 +28,7 @@ public class ProgramCustomRepositoryImpl extends QuerydslRepositorySupport imple
                 ).select(Projections.constructor(ProgramViewDto.class,
                         program.id,
                         program.name,
-                        program.theme
+                        program.theme.name
                 ));
 
         return PageableExecutionUtils.getPage(query.fetch(), pageable, query::fetchCount);

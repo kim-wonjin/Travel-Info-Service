@@ -29,7 +29,7 @@ public class ProgramViewService {
                program.getIntroduction(),
                program.getIntroductionDetail(),
                program.getRegion(),
-               program.getTheme()
+               program.getTheme().getName()
        ));
     }
     public Page<ProgramViewDto> pageBy(Pageable pageable) {

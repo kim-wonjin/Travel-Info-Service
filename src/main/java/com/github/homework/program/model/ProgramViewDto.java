@@ -9,9 +9,9 @@ public class ProgramViewDto {
     private final Long id;
     private final String name;
     private final String themeName;
-    public ProgramViewDto(Long id, String name, Theme theme) {
+    public ProgramViewDto(Long id, String name, String themeName) {
         this.id = id;
         this.name = name;
-        this.themeName = theme.getName();
+        this.themeName = themeName;
     }
 }

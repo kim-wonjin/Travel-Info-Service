@@ -13,12 +13,12 @@ public class ProgramViewDetailDto {
     private final String region;
     private final String themeName;
 
-    public ProgramViewDetailDto(Long id, String name, String introduction, String introductionDetail, String region, Theme theme) {
+    public ProgramViewDetailDto(Long id, String name, String introduction, String introductionDetail, String region, String themeName) {
         this.id = id;
         this.name = name;
         this.introduction = introduction;
         this.introductionDetail = introductionDetail;
         this.region = region;
-        this.themeName = theme.getName();
+        this.themeName = themeName;
     }
 }
