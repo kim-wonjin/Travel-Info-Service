@@ -2,6 +2,7 @@ package com.github.homework.program.repository;
 
 
 import com.github.homework.program.domain.Program;
+import com.github.homework.program.model.ProgramViewDetailDto;
 import com.github.homework.program.model.ProgramViewDto;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.JPQLQuery;
@@ -11,11 +12,12 @@ import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport
 import org.springframework.data.support.PageableExecutionUtils;
 
 import java.util.Objects;
+import java.util.Optional;
 
 import static com.github.homework.program.domain.QProgram.program;
 import static com.github.homework.theme.domain.QTheme.theme;
 
-public class ProgramCustomRepositoryImpl extends QuerydslRepositorySupport implements ProgramCustomRepository {
+public abstract class ProgramCustomRepositoryImpl extends QuerydslRepositorySupport implements ProgramCustomRepository {
 
     public ProgramCustomRepositoryImpl() {
         super(Program.class);

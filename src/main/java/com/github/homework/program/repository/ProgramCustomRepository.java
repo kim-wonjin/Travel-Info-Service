@@ -1,8 +1,11 @@
 package com.github.homework.program.repository;
 
+import com.github.homework.program.model.ProgramViewDetailDto;
 import com.github.homework.program.model.ProgramViewDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+
+import java.util.Optional;
 
 public interface ProgramCustomRepository {
 
