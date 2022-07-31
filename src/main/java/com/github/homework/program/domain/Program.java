@@ -4,17 +4,20 @@ package com.github.homework.program.domain;
 import com.github.homework.theme.domain.Theme;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.*;
 
 
 @Entity
 @Getter
+@Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @SequenceGenerator(
         name = "program_seq_generator",
         sequenceName = "program_seq", allocationSize = 10)
 @EqualsAndHashCode(of = "id")
+@DynamicInsert
 @ToString
 public class Program {
     @Id
@@ -29,6 +32,9 @@ public class Program {
     private String region;
     @Column(name = "introduction_detail", nullable = false)
     private String introductionDetail;
+    @Column(name = "viewCount", nullable = false)
+    @ColumnDefault("0")
+    private Long viewCount;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "theme_id", foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT))
@@ -36,11 +42,12 @@ public class Program {
 
 
     @Builder
-    public Program(String name, String introduction, String introductionDetail, String region, Theme theme) {
+    public Program(String name, String introduction, String introductionDetail, String region, Long viewCount, Theme theme) {
         this.name = name;
         this.introduction = introduction;
         this.introductionDetail = introductionDetail;
         this.region = region;
+        this.viewCount = viewCount;
         this.theme = theme;
     }
 

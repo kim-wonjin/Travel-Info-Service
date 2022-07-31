@@ -4,6 +4,7 @@ import static org.assertj.core.api.BDDAssertions.then;
 import static org.mockito.BDDMockito.given;
 
 import com.github.homework.program.domain.Program;
+import com.github.homework.program.exception.ProgramNotFoundException;
 import com.github.homework.program.model.ProgramViewDetailDto;
 import com.github.homework.program.model.ProgramViewDto;
 import com.github.homework.program.repository.ProgramRepository;
@@ -33,7 +34,7 @@ class ProgramViewServiceTest {
 
     @Test
     @DisplayName("프로그램이 한개 일때")
-    void getByTest() {
+    void getByTest() throws ProgramNotFoundException {
         //given
         Program program = Program.builder()
                 .name("name")

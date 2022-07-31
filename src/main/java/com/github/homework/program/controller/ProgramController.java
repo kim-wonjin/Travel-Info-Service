@@ -1,5 +1,6 @@
 package com.github.homework.program.controller;
 
+import com.github.homework.program.domain.Program;
 import com.github.homework.program.exception.ProgramNotFoundException;
 import com.github.homework.program.model.ProgramSaveDto;
 import com.github.homework.program.model.ProgramViewDetailDto;
@@ -35,13 +36,13 @@ public class ProgramController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ProgramViewDetailDto> getBy(@PathVariable Long id) {
+    public ResponseEntity<ProgramViewDetailDto> getBy(@PathVariable Long id) throws ProgramNotFoundException {
         Optional<ProgramViewDetailDto> programViewDto = this.programViewService.getBy(id);
         return programViewDto.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @GetMapping("/name/{name}")
-    public ResponseEntity<ProgramViewDetailDto> getByName(@PathVariable String name) {
+    @GetMapping("/name")
+    public ResponseEntity<ProgramViewDetailDto> getByName(@RequestParam String name) throws ProgramNotFoundException {
         Optional<ProgramViewDetailDto> programViewDto = this.programViewService.getByName(name);
         return programViewDto.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
@@ -62,5 +63,11 @@ public class ProgramController {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(new SimpleResponse(true, "수정 성공"));
+    }
+
+    @GetMapping("/top10")
+    public ResponseEntity<List<ProgramViewDetailDto>> getTop10() throws ProgramNotFoundException {
+        Optional<List<ProgramViewDetailDto>> result =  this.programViewService.getTop10();
+        return result.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 }
